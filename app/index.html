@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+  <link href="http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900|Oswald:300,400,700|Dosis:200,300,400,500,600,700,800|Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"
+    rel="stylesheet" type="text/css">
+  <!-- google fonts end -->
+  <script src="https://maps.googleapis.com/maps/api/js?" type="text/javascript"></script>
+
+</head>
+
+<body ng-app="metronomeApp">
+  <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+  <!-- Add your site or application content here -->
+
+
+  <div class="header">
+    <div class="navbar" role="navigation">
+      <div class="navbar-buttons">
+        <span><img class="open-menu" src="images/menu.svg" alt=""/></span>
+      </div>
+    </div>
+
+    <!-- Overlay Navigation Menu -->
+    <div class="overlay">
+      <h2 class="nav-title">Navigation</h2>
+      <nav class="overlay-menu">
+        <ul class="ul">
+          <li><a href="#">Á Propos</a></li>
+          <li><a href="#">Service</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Index</a></li>
+          <li><img class="close-menu" src="images/close.svg" alt="" /></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div id="map-wrapper">
+    <map id="map"></map>
+  </div>
+  <!--  
+  <div class="container">
+    <div ng-view=""></div>
+  </div>
+
+  
+
+  <div class="footer">
+    <div class="container">
+      <p><span class="glyphicon glyphicon-heart"></span> AngularJs Web Site With Yeoman. Bonnard Valentin 2017 <span class="fa fa-copyright"></span></p>
+    </div>
+  </div>
+
+  -->
+
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+  <script>
+    !function (A, n, g, u, l, a, r) {
+      A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+        (A[l].q = A[l].q || []).push(arguments)
+      }, A[l].l = +new Date, a = n.createElement(g),
+        r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+  </script>
+
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/overlay.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/about.js"></script>
+  <script src="scripts/directives/map.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>
