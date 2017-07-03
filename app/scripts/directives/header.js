@@ -14,6 +14,7 @@ angular.module('metronomeApp')
       templateUrl: '../views/header.html',
       link: function postLink(scope, element, attrs) {
         console.log('header load');
+        
         let openMenu = angular.element(document.querySelector('.open-menu')),
           closeMenu = angular.element(document.querySelector('.close-menu')),
           overlay = angular.element(document.querySelector('.overlay'));
