@@ -32,14 +32,14 @@ angular.module('metronomeApp')
         closeMenu.on('click', function () {
           console.log('Click close menu');
           overlay.removeClass('open');
-          scope.IsVisible = true;
+          //scope.IsVisible = true;
           console.log(scope.IsVisible);
         });
 
         let nav = angular.element(document.querySelector(".overlay-menu"));
         nav.on("click", "a", null, function () {
           console.log('tentative de fermeture');
-          scope.IsVisible = true;
+          //scope.IsVisible = true;
           overlay.removeClass('open')
 
 

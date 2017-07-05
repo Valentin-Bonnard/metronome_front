@@ -18,7 +18,9 @@ var app = angular.module('metronomeApp', [
   'ngRoute',
   'ngSanitize',
   'ngTouch',
-  'openWeather'
+  'openWeather',
+  'pascalprecht.translate',
+  'tmh.dynamicLocale'
 ]);
 app.controller('controler', ['$scope', 'openWeatherMapfactory', function (scope, weather) {
 
@@ -38,41 +40,71 @@ app.controller('controler', ['$scope', 'openWeatherMapfactory', function (scope,
       console.info("This is an error", _err);
   });
 
-  
+
 }]);
 
-app.config(function ($routeProvider, $locationProvider) {
-  $locationProvider.hashPrefix('');
-  $routeProvider
-    .when('/', {
-      templateUrl: 'views/main.html',
-      controller: 'MainCtrl',
-      controllerAs: 'main'
-    })
-    .when('/about', {
-      templateUrl: 'views/about.html',
-      controller: 'AboutCtrl',
-      controllerAs: 'about'
-    })
-    .otherwise({
-      redirectTo: '/'
-    });
-}).animation('.reveal-animation', function () {
-  return {
-    enter: function (element, done) {
-      element.css('display', 'none');
-      console.log(element);
-      element.fadeIn(5000, done);
-      return function () {
-        element.stop();
-      }
+app
+  .constant('DEBUG_MODE', true)
+  .constant('VERSION_TAG', new Date().getTime())
+  .constant('LOCALES', {
+    'locales': {
+      'fr_FR': 'Francais',
+      'en_US': 'English',
+      'ja_JP': '日本'
     },
-    leave: function (element, done) {
-      element.fadeOut(500, done)
-      return function () {
-        element.stop();
+    'preferredLocale': 'fr_FR'
+  });
+
+app
+  .config(function ($translateProvider, DEBUG_MODE, LOCALES) {
+    if (DEBUG_MODE) {
+      $translateProvider.useMissingTranslationHandlerLog(); // warns about missing translate
+    }
+
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'ressources/locale-',
+      suffix: '.json'
+    });
+
+    $translateProvider.preferredLocale(LOCALES.preferredLocale);
+    $translateProvider.useLocalStorage();
+  })
+  .config(function (tmhDynamicLocaleProvider) {
+    tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
+  })
+  .config(function ($routeProvider, $locationProvider) {
+    $locationProvider.hashPrefix('');
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  })
+  .animation('.reveal-animation', function () {
+    return {
+      enter: function (element, done) {
+        element.css('display', 'none');
+        console.log(element);
+        element.fadeIn(5000, done);
+        return function () {
+          element.stop();
+        }
+      },
+      leave: function (element, done) {
+        element.fadeOut(500, done)
+        return function () {
+          element.stop();
+        }
       }
     }
-  }
-});
+  });
 
